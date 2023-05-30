@@ -16,7 +16,7 @@ const ProductDetail = () => {
     if (params.slug) {
       getProduct();
     }
-  }, [params.slug]);
+  }, []);
 
   const getProduct = async () => {
     try {

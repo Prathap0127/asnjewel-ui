@@ -17,9 +17,7 @@ const CartPage = () => {
   const totalPrice = () => {
     try {
       let total = 0;
-      cart.map((p) => {
-        total = total + p.price;
-      });
+      cart.map((p) => (total = total + p.price));
       //total amout with inr standard
       return total.toLocaleString("en-IN", {
         style: "currency",
