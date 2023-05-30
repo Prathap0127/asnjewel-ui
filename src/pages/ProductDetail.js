@@ -2,12 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Main from "../components/Main";
+import { useCart } from "../context/cart";
+import { toast } from "react-hot-toast";
 
 const ProductDetail = () => {
   const navigate = useNavigate();
   const params = useParams();
   const [product, setProduct] = useState({});
   const [relatedProduct, setRelatedProduct] = useState([]);
+  const [cart, setCart] = useCart();
 
   useEffect(() => {
     if (params.slug) {
@@ -18,7 +21,7 @@ const ProductDetail = () => {
   const getProduct = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/product/get-product/${params.slug}`
+        `https://asnjewelshop.onrender.com/api/product/get-product/${params.slug}`
       );
       setProduct(data.product);
       similarProduct(data.product._id, data.product.category._id);
@@ -32,7 +35,7 @@ const ProductDetail = () => {
   const similarProduct = async (pid, cid) => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/product/related-product/${pid}/${cid}`
+        `https://asnjewelshop.onrender.com/api/product/related-product/${pid}/${cid}`
       );
       setRelatedProduct(data.products);
     } catch (error) {
@@ -46,7 +49,7 @@ const ProductDetail = () => {
         <div className="row">
           <div className="col-md-5">
             <img
-              src={`http://localhost:8080/api/product/product-photo/${product._id}`}
+              src={`https://asnjewelshop.onrender.com/api/product/product-photo/${product._id}`}
               className="card-img-top"
               alt={product.name}
             />
@@ -59,7 +62,20 @@ const ProductDetail = () => {
             <h5>Making Charges: {product.making}%</h5>
             <h5>Price : {product.price}</h5>
             <h5>Category : {product?.category?.name}</h5>
-            <button className="btn btn-warning">Add to cart</button>
+            <button
+              className="btn btn-warning"
+              onClick={() => {
+                // console.log(...cart, p);
+                setCart([...cart, product]);
+                localStorage.setItem(
+                  "cart",
+                  JSON.stringify([...cart, product])
+                );
+                toast.success("product added to cart");
+              }}
+            >
+              Add to cart
+            </button>
           </div>
         </div>
       </div>
@@ -74,7 +90,7 @@ const ProductDetail = () => {
             {relatedProduct.map((p) => (
               <div className="card m-2" style={{ width: "18rem" }}>
                 <img
-                  src={`http://localhost:8080/api/product/product-photo/${p._id}`}
+                  src={`https://asnjewelshop.onrender.com/api/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
                 />
@@ -97,7 +113,20 @@ const ProductDetail = () => {
                   >
                     More details
                   </button>
-                  <button className="btn btn-warning">Add to cart</button>
+                  <button
+                    className="btn btn-warning"
+                    onClick={() => {
+                      // console.log(...cart, p);
+                      setCart([...cart, p]);
+                      localStorage.setItem(
+                        "cart",
+                        JSON.stringify([...cart, p])
+                      );
+                      toast.success("product added to cart");
+                    }}
+                  >
+                    Add to cart
+                  </button>
                 </div>
               </div>
             ))}

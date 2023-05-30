@@ -7,9 +7,9 @@ import { useAuth } from "../context/auth";
 import { useCart } from "../context/cart";
 
 const CartPage = () => {
-  const [auth, setAuth] = useAuth();
+  const [auth] = useAuth();
   const [cart, setCart] = useCart();
-  const [loading, setLoading] = useState(false);
+  const [setLoading] = useState(false);
   const navigate = useNavigate();
 
   //calculte total
@@ -48,7 +48,7 @@ const CartPage = () => {
       setLoading(true);
       console.log(cart);
       const { data } = await axios.post(
-        "http://localhost:8080/api/product/orders",
+        "https://asnjewelshop.onrender.com/api/product/orders",
         { cart }
       );
       setLoading(false);
@@ -87,7 +87,7 @@ const CartPage = () => {
                 <div className="row card flex-row mb-2" key={p._id}>
                   <div className="col-md-4">
                     <img
-                      src={`http://localhost:8080/api/product/product-photo/${p._id}`}
+                      src={`https://asnjewelshop.onrender.com/api/product/product-photo/${p._id}`}
                       className="card-img-top"
                       alt={p.name}
                       width="100%"

@@ -26,7 +26,7 @@ const CreateProduct = () => {
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/category/get-category"
+        "https://asnjewelshop.onrender.com/api/category/get-category"
       );
       console.log(data);
       if (data.success) {
@@ -59,7 +59,7 @@ const CreateProduct = () => {
       productData.append("category", category);
       productData.append("shipping", shipping);
       const { data } = await axios.post(
-        "http://localhost:8080/api/product/create-product",
+        "https://asnjewelshop.onrender.com/api/product/create-product",
         productData
       );
       if (data.success) {

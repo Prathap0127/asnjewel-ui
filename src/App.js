@@ -28,6 +28,7 @@ import CategorizedProduct from "./pages/CategorizedProduct";
 import CartPage from "./pages/CartPage";
 
 function App() {
+  console.log(process.env.BASE_URL);
   return (
     <>
       <Routes>

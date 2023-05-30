@@ -15,7 +15,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
       let res = await axios.post(
-        `http://localhost:8080/api/users/forgot-password`,
+        `https://asnjewelshop.onrender.com/api/users/forgot-password`,
         {
           email,
           newPassword,

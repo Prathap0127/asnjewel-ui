@@ -2,9 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSearch } from "../context/search";
 import Main from "./Main";
+import { useCart } from "../context/cart";
+import { toast } from "react-hot-toast";
 
 const Search = () => {
-  const [values, setValues] = useSearch();
+  const [values] = useSearch();
+  const [cart, setCart] = useCart();
   const navigate = useNavigate();
   return (
     <Main>
@@ -20,7 +23,7 @@ const Search = () => {
             {values.result.map((p) => (
               <div className="card m-2" style={{ width: "18rem" }}>
                 <img
-                  src={`http://localhost:8080/api/product/product-photo/${p._id}`}
+                  src={`https://asnjewelshop.onrender.com/api/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
                 />
@@ -35,7 +38,20 @@ const Search = () => {
                   >
                     More details
                   </button>
-                  <button className="btn btn-primary ms-1">Add to cart</button>
+                  <button
+                    className="btn btn-warning"
+                    onClick={() => {
+                      // console.log(...cart, p);
+                      setCart([...cart, p]);
+                      localStorage.setItem(
+                        "cart",
+                        JSON.stringify([...cart, p])
+                      );
+                      toast.success("product added to cart");
+                    }}
+                  >
+                    Add to cart
+                  </button>
                 </div>
               </div>
             ))}

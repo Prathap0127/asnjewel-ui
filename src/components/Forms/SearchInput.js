@@ -11,7 +11,7 @@ const SearchInput = () => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/product/product-search/${values.keyword}`
+        `https://asnjewelshop.onrender.com/api/product/product-search/${values.keyword}`
       );
       setValues({ ...values, result: data });
       navigate("/search");

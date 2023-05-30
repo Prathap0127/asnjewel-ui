@@ -10,6 +10,10 @@
     font-weight: bold;
     color: white;
 }
+.navbar-brand:hover{
+  -webkit-text-stroke: 1px white;
+  -webkit-text-fill-color: black;
+}
 .navbar-brand.active{
     color: white;
 }

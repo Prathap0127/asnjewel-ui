@@ -9,7 +9,7 @@ const Users = () => {
   const handleUsers = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/users/all-users"
+        "https://asnjewelshop.onrender.com/api/users/all-users"
       );
       setUser(data.users);
     } catch (error) {

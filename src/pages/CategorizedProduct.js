@@ -2,10 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Main from "../components/Main";
+import { useCart } from "../context/cart";
+import { toast } from "react-hot-toast";
 
 const CategorizedProduct = () => {
   const [product, setProduct] = useState([]);
   const [category, setCategory] = useState([]);
+  const [cart, setCart] = useCart();
   const params = useParams();
   const navigate = useNavigate();
 
@@ -18,7 +21,7 @@ const CategorizedProduct = () => {
   const getProductbyCate = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/product/product-category/${params.slug}`
+        `https://asnjewelshop.onrender.com/api/product/product-category/${params.slug}`
       );
       setProduct(data.products);
       setCategory(data.category);
@@ -41,7 +44,7 @@ const CategorizedProduct = () => {
               {product?.map((p) => (
                 <div className="card m-2" style={{ width: "18rem" }}>
                   <img
-                    src={`http://localhost:8080/api/product/product-photo/${p._id}`}
+                    src={`https://asnjewelshop.onrender.com/api/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />
@@ -64,7 +67,20 @@ const CategorizedProduct = () => {
                     >
                       More details
                     </button>
-                    <button className="btn btn-warning">Add to cart</button>
+                    <button
+                      className="btn btn-warning"
+                      onClick={() => {
+                        // console.log(...cart, p);
+                        setCart([...cart, p]);
+                        localStorage.setItem(
+                          "cart",
+                          JSON.stringify([...cart, p])
+                        );
+                        toast.success("product added to cart");
+                      }}
+                    >
+                      Add to cart
+                    </button>
                   </div>
                 </div>
               ))}

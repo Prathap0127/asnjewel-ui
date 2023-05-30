@@ -7,7 +7,7 @@ import Main from "../Main";
 
 const { Option } = Select;
 const Orders = () => {
-  const [status, useStatus] = useState([
+  const [status] = useState([
     "Not Process",
     "Processing",
     "Shipped",
@@ -20,7 +20,7 @@ const Orders = () => {
   const getOrders = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/users/all-orders"
+        "https://asnjewelshop.onrender.com/api/users/all-orders"
       );
 
       setOrders(data);
@@ -40,7 +40,7 @@ const Orders = () => {
   const handleChange = async (value, orderId) => {
     try {
       const { data } = await axios.put(
-        `http://localhost:8080/api/users/order-status/${orderId}`,
+        `https://asnjewelshop.onrender.com/api/users/order-status/${orderId}`,
         { status: value }
       );
       getOrders();
@@ -101,7 +101,7 @@ const Orders = () => {
                       <div className="row mb-2 p-3 card flex-row" key={p._id}>
                         <div className="col-md-4">
                           <img
-                            src={`http://localhost:8080/api/product/product-photo/${p._id}`}
+                            src={`https://asnjewelshop.onrender.com/api/product/product-photo/${p._id}`}
                             className="card-img-top"
                             alt={p.name}
                             width="100%"
