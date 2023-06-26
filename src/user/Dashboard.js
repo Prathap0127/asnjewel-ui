@@ -12,7 +12,7 @@ const Dashboard = () => {
   const handleCard = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/users/get-orders"
+        "https://asnjewelshop.onrender.com/api/users/get-orders"
       );
 
       setOrder(data.length);
