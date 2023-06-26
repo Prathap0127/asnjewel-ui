@@ -10,7 +10,9 @@ export default function PrivateRoute() {
 
   useEffect(() => {
     let authCheck = async () => {
-      let res = await axios.get("http://localhost:8080/api/users/respo");
+      let res = await axios.get(
+        "https://asnjewelshop.onrender.com/api/users/respo"
+      );
       if (res.data.ok) {
         setOk(true);
       } else {
