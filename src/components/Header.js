@@ -51,11 +51,11 @@ const Header = () => {
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <NavLink to="/about" className="nav-link" href="#">
                   About
                 </NavLink>
-              </li>
+              </li> */}
 
               <li className="nav-item dropdown">
                 <Link
@@ -84,11 +84,11 @@ const Header = () => {
                 </ul>
               </li>
 
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <NavLink to="/contact" className="nav-link" href="#">
                   Contact
                 </NavLink>
-              </li>
+              </li> */}
               {!auth.user ? (
                 <>
                   <li className="nav-item">
