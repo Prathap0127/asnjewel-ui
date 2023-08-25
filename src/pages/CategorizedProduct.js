@@ -21,7 +21,7 @@ const CategorizedProduct = () => {
   const getProductbyCate = async () => {
     try {
       const { data } = await axios.get(
-        `https://asnjewelshop.onrender.com/api/product/product-category/${params.slug}`
+        `${process.env.BASE_URL}/api/product/product-category/${params.slug}`
       );
       setProduct(data.products);
       setCategory(data.category);
@@ -44,7 +44,7 @@ const CategorizedProduct = () => {
               {product?.map((p) => (
                 <div className="card m-2" style={{ width: "18rem" }}>
                   <img
-                    src={`https://asnjewelshop.onrender.com/api/product/product-photo/${p._id}`}
+                    src={`${process.env.BASE_URL}/api/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />
