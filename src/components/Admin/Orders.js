@@ -20,7 +20,7 @@ const Orders = () => {
   const getOrders = async () => {
     try {
       const { data } = await axios.get(
-        "https://asnjewelshop.onrender.com/api/users/all-orders"
+        `${process.env.BASE_URL}/api/users/all-orders`
       );
 
       setOrders(data);
@@ -40,7 +40,7 @@ const Orders = () => {
   const handleChange = async (value, orderId) => {
     try {
       const { data } = await axios.put(
-        `https://asnjewelshop.onrender.com/api/users/order-status/${orderId}`,
+        `${process.env.BASE_URL}/api/users/order-status/${orderId}`,
         { status: value }
       );
       getOrders();
@@ -101,7 +101,7 @@ const Orders = () => {
                       <div className="row mb-2 p-3 card flex-row" key={p._id}>
                         <div className="col-md-4">
                           <img
-                            src={`https://asnjewelshop.onrender.com/api/product/product-photo/${p._id}`}
+                            src={`${process.env.BASE_URL}/api/product/product-photo/${p._id}`}
                             className="card-img-top"
                             alt={p.name}
                             width="100%"

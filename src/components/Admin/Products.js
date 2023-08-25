@@ -11,7 +11,7 @@ const Products = () => {
   const getAllProducts = async () => {
     try {
       const { data } = await axios.get(
-        "https://asnjewelshop.onrender.com/api/product/get-product"
+        `${process.env.BASE_URL}/api/product/get-product`
       );
       setProducts(data.products);
     } catch (error) {
@@ -40,7 +40,7 @@ const Products = () => {
                 >
                   <div className="card m-2" style={{ width: "18rem" }}>
                     <img
-                      src={`https://asnjewelshop.onrender.com/api/product/product-photo/${p._id}`}
+                      src={`${process.env.BASE_URL}/api/product/product-photo/${p._id}`}
                       className="card-img-top"
                       alt={p.name}
                     />

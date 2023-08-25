@@ -17,7 +17,7 @@ const CreateCategory = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://asnjewelshop.onrender.com/api/category/create-category",
+        `${process.env.BASE_URL}/api/category/create-category`,
         { name }
       );
       if (data.success) {
@@ -35,7 +35,7 @@ const CreateCategory = () => {
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get(
-        "https://asnjewelshop.onrender.com/api/category/get-category"
+        `${process.env.BASE_URL}/api/category/get-category`
       );
       if (data.success) {
         console.log(data.category);
@@ -58,7 +58,7 @@ const CreateCategory = () => {
     try {
       console.log(e);
       const { data } = await axios.put(
-        `https://asnjewelshop.onrender.com/api/category/update-category/${selected._id}`,
+        `${process.env.BASE_URL}/api/category/update-category/${selected._id}`,
         { name: updatedName }
       );
       if (data.success) {
@@ -81,7 +81,7 @@ const CreateCategory = () => {
   const handleDelete = async (id) => {
     try {
       const { data } = await axios.delete(
-        `https://asnjewelshop.onrender.com/api/category/delete-category/${id}`
+        `${process.env.BASE_URL}/api/category/delete-category/${id}`
       );
       if (data.success) {
         toast.success(`${name} deleted Sucessfully`);
