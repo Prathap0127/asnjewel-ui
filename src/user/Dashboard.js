@@ -11,9 +11,8 @@ const Dashboard = () => {
 
   const handleCard = async () => {
     try {
-      const { data } = await axios.get(
-        "https://asnjewelshop.onrender.com/api/users/get-orders"
-      );
+      //https://asnjewelshop.onrender.com/api/users
+      const { data } = await axios.get(`${process.env.BASE_URL}/get-orders`);
 
       setOrder(data.length);
     } catch (error) {

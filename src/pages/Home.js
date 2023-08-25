@@ -28,7 +28,7 @@ const Home = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `https://asnjewelshop.onrender.com/api/product/product-list/${page}`
+        `${process.env.BASE_URL}/product-list/${page}`
       );
       setLoading(false);
       setProducts(data.products);
