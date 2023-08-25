@@ -46,7 +46,7 @@ const CartPage = () => {
       setLoading(true);
       console.log(cart);
       const { data } = await axios.post(
-        "https://asnjewelshop.onrender.com/api/product/orders",
+        `${process.env.BASE_URL}/api/product/orders`,
         { cart }
       );
       setLoading(false);
@@ -85,7 +85,7 @@ const CartPage = () => {
                 <div className="row card flex-row mb-2" key={p._id}>
                   <div className="col-md-4">
                     <img
-                      src={`https://asnjewelshop.onrender.com/api/product/product-photo/${p._id}`}
+                      src={`${process.env.BASE_URL}/api/product/product-photo/${p._id}`}
                       className="card-img-top"
                       alt={p.name}
                       width="100%"

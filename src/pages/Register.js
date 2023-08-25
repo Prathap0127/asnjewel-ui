@@ -19,17 +19,14 @@ const Register = () => {
     e.preventDefault();
     // console.log(name, email, password, phone, address);
     try {
-      let res = await axios.post(
-        `https://asnjewelshop.onrender.com/api/users/register`,
-        {
-          name,
-          email,
-          password,
-          phone,
-          address,
-          answer,
-        }
-      );
+      let res = await axios.post(`${process.env.BASE_URL}/api/users/register`, {
+        name,
+        email,
+        password,
+        phone,
+        address,
+        answer,
+      });
       if (res.data.success) {
         toast.success(res.data.message);
         Navigate("/login");

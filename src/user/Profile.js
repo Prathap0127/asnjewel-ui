@@ -28,7 +28,7 @@ const Profile = () => {
     // console.log(name, email, password, phone, address);
     try {
       let { data } = await axios.put(
-        `https://asnjewelshop.onrender.com/api/users/profile`,
+        `${process.env.BASE_URL}/api/users/profile`,
         {
           name,
           email,

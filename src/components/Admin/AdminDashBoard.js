@@ -12,16 +12,16 @@ const AdminDashBoard = () => {
   const handleCard = async () => {
     try {
       const { data } = await axios.get(
-        "https://asnjewelshop.onrender.com/api/product/get-product"
+        `${process.env.BASE_URL}/api/product/get-product`
       );
       console.log(data);
       setProduct(data.products);
       const res = await axios.get(
-        "https://asnjewelshop.onrender.com/api/users/all-users"
+        `${process.env.BASE_URL}/api/users/all-users`
       );
       setUser(res.data.userCount);
       const order = await axios.get(
-        "https://asnjewelshop.onrender.com/api/users/all-orders"
+        `${process.env.BASE_URL}/api/users/all-orders`
       );
       setOrders(order.data.length);
     } catch (error) {

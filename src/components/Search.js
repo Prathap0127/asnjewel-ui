@@ -23,7 +23,7 @@ const Search = () => {
             {values.result.map((p) => (
               <div className="card m-2" style={{ width: "18rem" }}>
                 <img
-                  src={`https://asnjewelshop.onrender.com/api/product/product-photo/${p._id}`}
+                  src={`${process.env.BASE_URL}/api/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
                 />
