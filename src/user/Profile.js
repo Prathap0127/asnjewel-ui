@@ -28,7 +28,7 @@ const Profile = () => {
     // console.log(name, email, password, phone, address);
     try {
       let { data } = await axios.put(
-        `${process.env.BASE_URL}/api/users/profile`,
+        `${process.env.REACT_APP_SERVER_URL}/api/users/profile`,
         {
           name,
           email,

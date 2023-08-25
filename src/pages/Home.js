@@ -28,7 +28,7 @@ const Home = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `${process.env.BASE_URL}/api/product/product-list/${page}`
+        `${process.env.REACT_APP_SERVER_URL}/api/product/product-list/${page}`
       );
       setLoading(false);
       setProducts(data.products);
@@ -47,7 +47,7 @@ const Home = () => {
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.BASE_URL}/api/category/get-category`
+        `${process.env.REACT_APP_SERVER_URL}/api/category/get-category`
       );
       console.log(data);
       if (data.success) {
@@ -63,7 +63,7 @@ const Home = () => {
   const getTotal = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.BASE_URL}/api/product/product-count`
+        `${process.env.REACT_APP_SERVER_URL}/api/product/product-count`
       );
       setTotal(data?.total);
     } catch (error) {
@@ -104,7 +104,7 @@ const Home = () => {
     try {
       console.log(checked);
       const { data } = await axios.post(
-        `${process.env.BASE_URL}/api/product/filter-products`,
+        `${process.env.REACT_APP_SERVER_URL}/api/product/filter-products`,
         { checked }
       );
       setProducts(data.products);
@@ -123,7 +123,7 @@ const Home = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `${process.env.BASE_URL}/api/product/product-list/${page}`
+        `${process.env.REACT_APP_SERVER_URL}/api/product/product-list/${page}`
       );
       setLoading(false);
       setProducts([...products, ...data?.products]);
@@ -167,7 +167,7 @@ const Home = () => {
               {products?.map((p) => (
                 <div className="card m-2" style={{ width: "18rem" }}>
                   <img
-                    src={`${process.env.BASE_URL}/api/product/product-photo/${p._id}`}
+                    src={`${process.env.REACT_APP_SERVER_URL}/api/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />

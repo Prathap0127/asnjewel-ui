@@ -13,7 +13,7 @@ const Dashboard = () => {
     try {
       //https://asnjewelshop.onrender.com/api/users
       const { data } = await axios.get(
-        `${process.env.BASE_URL}/api/users/get-orders`
+        `${process.env.REACT_APP_SERVER_URL}/api/users/get-orders`
       );
 
       setOrder(data.length);

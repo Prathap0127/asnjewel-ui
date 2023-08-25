@@ -26,7 +26,7 @@ import CategorizedProduct from "./pages/CategorizedProduct";
 import CartPage from "./pages/CartPage";
 
 function App() {
-  console.log(process.env.BASE_URL);
+  console.log(process.env.REACT_APP_SERVER_URL);
   return (
     <>
       <Routes>

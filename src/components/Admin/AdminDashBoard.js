@@ -12,16 +12,16 @@ const AdminDashBoard = () => {
   const handleCard = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.BASE_URL}/api/product/get-product`
+        `${process.env.REACT_APP_SERVER_URL}/api/product/get-product`
       );
       console.log(data);
       setProduct(data.products);
       const res = await axios.get(
-        `${process.env.BASE_URL}/api/users/all-users`
+        `${process.env.REACT_APP_SERVER_URL}/api/users/all-users`
       );
       setUser(res.data.userCount);
       const order = await axios.get(
-        `${process.env.BASE_URL}/api/users/all-orders`
+        `${process.env.REACT_APP_SERVER_URL}/api/users/all-orders`
       );
       setOrders(order.data.length);
     } catch (error) {

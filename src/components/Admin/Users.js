@@ -9,7 +9,7 @@ const Users = () => {
   const handleUsers = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.BASE_URL}/api/users/all-users`
+        `${process.env.REACT_APP_SERVER_URL}/api/users/all-users`
       );
       setUser(data.users);
     } catch (error) {

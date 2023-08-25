@@ -18,10 +18,13 @@ const Login = () => {
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await axios.post(`${process.env.BASE_URL}/api/users/login`, {
-        email,
-        password,
-      });
+      let res = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/api/users/login`,
+        {
+          email,
+          password,
+        }
+      );
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);
         setAuth({ ...auth, user: res.data.user, token: res.data.token });
