@@ -2,8 +2,6 @@ import "./App.css";
 
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Aboutus from "./pages/Aboutus";
-import Contact from "./pages/Contact";
 import PageNotFound from "./pages/PageNotFound";
 import Register from "./pages/Register";
 import { Toaster } from "react-hot-toast";
@@ -52,8 +50,6 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/category/:slug" element={<CategorizedProduct />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/about" element={<Aboutus />} />
-        <Route path="/contact" element={<Contact />} />
         <Route path="/signup" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
